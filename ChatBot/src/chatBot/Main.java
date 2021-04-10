@@ -20,6 +20,12 @@ public class Main {
 		System.out.println("\nWeather Conditions: "+info.getDescription());
 		
 		
+		/*
+		 * TODO: More JUNIT testing, hard because data is always changing 
+		 * 
+		 * */
+		
+		
 		
 	}
 
