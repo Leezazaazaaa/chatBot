@@ -11,6 +11,7 @@ public class WeatherData {
 	
 	private String input;
 	private JSONObject local;
+	private String[] names;
 	
 	
 	
@@ -24,11 +25,16 @@ public class WeatherData {
 		
 		this.local = new JSONObject(input);
 		
+		this.names = JSONObject.getNames(local);
+		
 	}
 	
 	public String[] getNames() {//returns string array of all the keys in the JSON string
-		return JSONObject.getNames(local);
+		return names;
 	}
+	
+	
+	
 	
 	
 	

@@ -22,5 +22,10 @@ class WeatherDataTest {
 		
 		
 	}
+	@Test
+	void testSetNames() {
+		
+		
+	}
 
 }
