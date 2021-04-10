@@ -2,6 +2,10 @@ package chatBot;
 
 import org.json.JSONObject;
 
+/*
+ * This Class stores all essential information we want to be used by the bot. Info extracted from WeatherData
+ */
+
 public class Weather {
 	
 	private double actualTemp;
