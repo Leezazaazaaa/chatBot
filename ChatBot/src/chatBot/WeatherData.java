@@ -44,6 +44,10 @@ public class WeatherData {
 		this.weather = new Weather(mainWeather);
 		
 	}
+	public Weather getWeather() {
+		
+		return this.weather;
+	}
 	
 	
 	
