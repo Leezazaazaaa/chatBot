@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 public class WeatherData {
 	
+	private final String APIKEY = "e3d8cd2bc42e09a996101d712189ec71";
 	private String input;
 	private JSONObject local;
 	private String[] names;
@@ -17,9 +18,9 @@ public class WeatherData {
 	
 	
 	
-	WeatherData(String location, String apiKey) throws IOException{
+	WeatherData(String location) throws IOException{
 		
-		URL oracle = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid="+apiKey+"&units=metric");
+		URL oracle = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid="+APIKEY+"&units=metric");
 		
 		BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
 		
