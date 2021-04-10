@@ -20,17 +20,24 @@ public class WeatherData {
 	
 	WeatherData(String location) throws IOException{
 		
+		//URL gets the JSON from openweathermap
+		
 		URL oracle = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid="+APIKEY+"&units=metric");
 		
+		//in converts the url into a single JSON string
 		BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
 		
 		this.input = in.readLine();
 		
+		
+		//create a JSON object from input string
 		this.local = new JSONObject(input);
 		
+		
+		//gets and sets all variable keys from JSON object
 		this.names = JSONObject.getNames(local);
 		
-		setWeather(local.getString("main"));
+		setWeather(local.get("main").toString());
 		
 	}
 	
@@ -48,6 +55,16 @@ public class WeatherData {
 	public Weather getWeather() {
 		
 		return this.weather;
+	}
+	public JSONObject getLocal() {
+		return local;
+	}
+	
+	
+	public void display() {
+		for(String string: names) {
+			System.out.println(string+" :"+local.get(string));
+		}
 	}
 	
 	

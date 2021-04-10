@@ -11,9 +11,8 @@ class WeatherDataTest {
 
 	@Test
 	void testGetNames() throws IOException {
-		String apiKey = "e3d8cd2bc42e09a996101d712189ec71";
 		String location = "Brisbane,AU";
-		WeatherData test = new WeatherData(location,apiKey);
+		WeatherData test = new WeatherData(location);
 		
 		String expected="visibility";
 		String actual = test.getNames()[0];
