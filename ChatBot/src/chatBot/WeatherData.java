@@ -69,10 +69,10 @@ public class WeatherData {
 	public JSONObject getLocal() {//returns the JSONObject created from input
 		return local;
 	}
-	public JSONObject getMain() {//returns the main data from the JSON Object
+	public JSONObject getMain() {//returns the main, JSON Object
 		return this.main;
 	}
-	public JSONObject getDescription() {//returns description JSON string
+	public JSONObject getDescription() {//returns description, JSON Object
 		return description;
 	}
 	
