@@ -4,9 +4,12 @@ import org.json.*;
 
 /*
  * This Class stores all essential information we want to be used by the bot. Info extracted from WeatherData
+ * Immutable class!
  */
 
 public class Weather {
+	
+	/*========================Attributes========================*/
 	
 	private double actualTemp;
 	private double minTemp;
@@ -16,9 +19,12 @@ public class Weather {
 	private double feelsLike;
 	private String description; //extra piece of data, describes day. e.g cloudy, sunny, raining, etc
 	
+	
+	/*========================Constructors========================*/
+	
 	public Weather(JSONObject main, JSONObject conditions){
 		
-		description = conditions.getString("description");
+		description = conditions.getString("description");//gets only the description of weather conditions from JSONObject conditions
 		actualTemp= main.getDouble("temp");
 		minTemp = main.getDouble("temp_min");
 		maxTemp = main.getDouble("temp_max");
@@ -28,6 +34,9 @@ public class Weather {
 		
 	}
 
+	
+	/*========================Getters========================*/
+	
 	public double getActualTemp() {
 		return actualTemp;
 	}

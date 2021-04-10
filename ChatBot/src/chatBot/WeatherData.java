@@ -8,7 +8,16 @@ import java.net.URL;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/*
+ *This class May not be necessary in the long run, for now it separates all the url 
+ *processing from the actual Weather information we want to use.
+ *So to set a Weather class a WeatherData class must be first instantiated. 
+ *
+ */
+
 public class WeatherData {
+	
+	/*========================Attributes========================*/
 	
 	private final String APIKEY = "e3d8cd2bc42e09a996101d712189ec71";
 	private String input;
@@ -18,7 +27,7 @@ public class WeatherData {
 	private Weather weather;
 	private String description;
 	
-	
+	/*========================Constructors========================*/
 	
 	WeatherData(String location) throws IOException{
 		
@@ -29,7 +38,7 @@ public class WeatherData {
 		//in converts the url into a single JSON string
 		BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
 		
-		this.input = in.readLine();
+		this.input = in.readLine();//JSON string
 		
 		
 		//create a JSON object from input string
@@ -39,6 +48,8 @@ public class WeatherData {
 		//gets and sets all variable keys from JSON object
 		this.names = JSONObject.getNames(local);
 		
+		this.main=local.get("main").toString();
+		
 		description = local.get("weather").toString().replaceAll("[\\[\\]]", ""); //for some reason the weather attribute is an array of length 1
 																				//this trims down the the array into a simple string that can be turned into a json object
 		
@@ -46,32 +57,46 @@ public class WeatherData {
 		
 	}
 	
+	
+	/*========================Getters========================*/
+	
+	public String getInput() {//gets raw JSON string from url
+		return input;
+	}
 	public String[] getNames() {//returns string array of all the keys in the JSON string
 		return names;
 	}
-	
-	private void setWeather() { //weather data is set based on only 2 attributes from te JSON file. The main and description
-		
-		this.weather = new Weather(new JSONObject(local.get("main").toString()), new JSONObject(description));
+	public JSONObject getLocal() {//returns the JSONObject created from input
+		return local;
 	}
-	public Weather getWeather() {
+	public String getMain() {//returns the main data from the JSON Object
+		return this.main;
+	}
+	public Weather getWeather() {//returns weather object storing all wanted data
 		
 		return this.weather;
 	}
-	public JSONObject getLocal() {
-		return local;
+	public String getDescription() {//returns description JSON string
+		return description;
 	}
 	
 	
-	public void display() {
+	/*========================Setters========================*/
+	
+	private void setWeather() { //weather data is set based on only 2 attributes from the JSON file. The main and description
+		//much more can be added.
+		this.weather = new Weather(new JSONObject(local.get("main").toString()), new JSONObject(description));
+	}
+	
+	
+	/*========================Attributes========================*/
+	
+	public void display() {//simple display method to see the contents of the JSON object
 		for(String string: names) {
 			System.out.println(string+" :"+local.get(string));
 		}
 	}
-	
-	public String getDescription() {
-		return description;
-	}
+
 	
 	
 	
