@@ -23,9 +23,8 @@ public class WeatherData {
 	private String input;
 	private JSONObject local;
 	private String[] names;
-	private String main;
-	private Weather weather;
-	private String description;
+	private JSONObject main;
+	private JSONObject description;
 	
 	/*========================Constructors========================*/
 	
@@ -48,12 +47,13 @@ public class WeatherData {
 		//gets and sets all variable keys from JSON object
 		this.names = JSONObject.getNames(local);
 		
-		this.main=local.get("main").toString();
+		//IMPORTANT: A JSONObject can have imbedded JSON objects
 		
-		description = local.get("weather").toString().replaceAll("[\\[\\]]", ""); //for some reason the weather attribute is an array of length 1
-																				//this trims down the the array into a simple string that can be turned into a json object
+		this.main= new JSONObject(local.get("main").toString()); //the main for example is a JSON object inside of a JSONObject
 		
-		setWeather();
+		description = new JSONObject(local.get("weather").toString().replaceAll("[\\[\\]]", ""));
+		/*the weather actually is an Array of length 1 so 
+		I turned it into a JSONObject by removing the "[]"*/
 		
 	}
 	
@@ -69,24 +69,15 @@ public class WeatherData {
 	public JSONObject getLocal() {//returns the JSONObject created from input
 		return local;
 	}
-	public String getMain() {//returns the main data from the JSON Object
+	public JSONObject getMain() {//returns the main data from the JSON Object
 		return this.main;
 	}
-	public Weather getWeather() {//returns weather object storing all wanted data
-		
-		return this.weather;
-	}
-	public String getDescription() {//returns description JSON string
+	public JSONObject getDescription() {//returns description JSON string
 		return description;
 	}
 	
 	
 	/*========================Setters========================*/
-	
-	private void setWeather() { //weather data is set based on only 2 attributes from the JSON file. The main and description
-		//much more can be added.
-		this.weather = new Weather(new JSONObject(local.get("main").toString()), new JSONObject(description));
-	}
 	
 	
 	/*========================Attributes========================*/

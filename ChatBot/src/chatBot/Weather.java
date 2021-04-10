@@ -1,7 +1,5 @@
 package chatBot;
 
-import org.json.*;
-
 /*
  * This Class stores all essential information we want to be used by the bot. Info extracted from WeatherData
  * Immutable class!
@@ -22,15 +20,15 @@ public class Weather {
 	
 	/*========================Constructors========================*/
 	
-	public Weather(JSONObject main, JSONObject conditions){
+	public Weather(WeatherData data){
 		
-		description = conditions.getString("description");//gets only the description of weather conditions from JSONObject conditions
-		actualTemp= main.getDouble("temp");
-		minTemp = main.getDouble("temp_min");
-		maxTemp = main.getDouble("temp_max");
-		humidity = main.getInt("humidity");
-		pressure = main.getInt("pressure");
-		feelsLike = main.getDouble("feels_like");
+		description = data.getDescription().getString("description");//gets only the description of weather conditions from JSONObject conditions
+		actualTemp= data.getMain().getDouble("temp");
+		minTemp = data.getMain().getDouble("temp_min");
+		maxTemp = data.getMain().getDouble("temp_max");
+		humidity = data.getMain().getInt("humidity");
+		pressure = data.getMain().getInt("pressure");
+		feelsLike = data.getMain().getDouble("feels_like");
 		
 	}
 
