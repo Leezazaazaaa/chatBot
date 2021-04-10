@@ -1,6 +1,6 @@
 package chatBot;
 
-import org.json.JSONObject;
+import org.json.*;
 
 /*
  * This Class stores all essential information we want to be used by the bot. Info extracted from WeatherData
@@ -14,9 +14,11 @@ public class Weather {
 	private int humidity;
 	private int pressure;
 	private double feelsLike;
+	private String description; //extra piece of data, describes day. e.g cloudy, sunny, raining, etc
 	
-	public Weather(JSONObject main){
+	public Weather(JSONObject main, JSONObject conditions){
 		
+		description = conditions.getString("description");
 		actualTemp= main.getDouble("temp");
 		minTemp = main.getDouble("temp_min");
 		maxTemp = main.getDouble("temp_max");
@@ -25,6 +27,7 @@ public class Weather {
 		feelsLike = main.getDouble("feels_like");
 		
 	}
+
 	public double getActualTemp() {
 		return actualTemp;
 	}
@@ -47,6 +50,9 @@ public class Weather {
 
 	public double getFeelsLike() {
 		return feelsLike;
+	}
+	public String getDescription() {
+		return description;
 	}
 
 

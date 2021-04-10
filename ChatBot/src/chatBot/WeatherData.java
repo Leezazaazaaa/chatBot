@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class WeatherData {
@@ -15,6 +16,7 @@ public class WeatherData {
 	private String[] names;
 	private String main;
 	private Weather weather;
+	private String description;
 	
 	
 	
@@ -37,7 +39,10 @@ public class WeatherData {
 		//gets and sets all variable keys from JSON object
 		this.names = JSONObject.getNames(local);
 		
-		setWeather(local.get("main").toString());
+		description = local.get("weather").toString().replaceAll("[\\[\\]]", ""); //for some reason the weather attribute is an array of length 1
+																				//this trims down the the array into a simple string that can be turned into a json object
+		
+		setWeather();
 		
 	}
 	
@@ -45,12 +50,9 @@ public class WeatherData {
 		return names;
 	}
 	
-	private void setWeather(String main) {
+	private void setWeather() { //weather data is set based on only 2 attributes from te JSON file. The main and description
 		
-		JSONObject mainWeather = new JSONObject(main);
-		
-		this.weather = new Weather(mainWeather);
-		
+		this.weather = new Weather(new JSONObject(local.get("main").toString()), new JSONObject(description));
 	}
 	public Weather getWeather() {
 		
@@ -65,6 +67,10 @@ public class WeatherData {
 		for(String string: names) {
 			System.out.println(string+" :"+local.get(string));
 		}
+	}
+	
+	public String getDescription() {
+		return description;
 	}
 	
 	
