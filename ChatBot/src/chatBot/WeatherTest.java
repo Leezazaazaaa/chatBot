@@ -67,6 +67,18 @@ class WeatherTest {
 		double actual = test.getPressure();
 		assertEquals (expected, actual, 0.1); //equating the value with the epsilon of 0.1
 	}
+	
+	//testing the feels like temperature
+	@Test
+	void testGetFeelsLike() throws IOException {
+		String location = "Brisbane,AU";
+		WeatherData data = new WeatherData(location);
+		Weather test = new Weather(data);
+		
+		double expected = 18.0;  //the expected value might not be same all the time as the weather keeps changing
+		double actual = test.getFeelsLike();
+		assertEquals (expected, actual, 0.1); //equating the value with the epsilon of 0.1
+	}
 
 
 }
