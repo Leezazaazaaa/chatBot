@@ -31,5 +31,17 @@ class WeatherTest {
 		double actual = test.getMinTemp();
 		assertEquals (expected, actual, 0.1);  //equating the value with the epsilon of 0.1
 	}
+	
+	//testing the maximum temperature
+	@Test
+	void testGetMaxTemp() throws IOException {
+		String location = "Brisbane,AU";
+		WeatherData data = new WeatherData(location);
+		Weather test = new Weather(data);
+		
+		double expected = 18.89; //the expected value might not be same all the time as the weather keeps changing
+		double actual = test.getMaxTemp();
+		assertEquals (expected, actual, 0.1); //equating the value with the epsilon of 0.1
+	}
 
 }
