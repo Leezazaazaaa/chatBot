@@ -177,4 +177,19 @@ class WeatherDataTest {
 		
 		
 	}
+	//testing object from input url
+	@Test
+	void testGetInput() throws IOException {
+		String location = "Brisbane,AU";
+		WeatherData test = new WeatherData(location);
+		
+		String expected="{\"coord\":{\"lon\":153.0281,\"lat\":-27.4679},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"clear sky\",\"icon\":\"01n\"}],\"base\":\"stations\",\"main\":{\"temp\":20.99,\"feels_like\":21.18,\"temp_min\":20,\"temp_max\":22.22,\"pressure\":1016,\"humidity\":78},\"visibility\":10000,\"wind\":{\"speed\":3.6,\"deg\":360},\"clouds\":{\"all\":0},\"dt\":1618481760,\"sys\":{\"type\":1,\"id\":9485,\"country\":\"AU\",\"sunrise\":1618430660,\"sunset\":1618471873},\"timezone\":36000,\"id\":2174003,\"name\":\"Brisbane\",\"cod\":200}";
+		String actual = test.getInput();
+		
+		assertEquals(expected, actual);
+			
+	}
+	
+	
+	
 }
