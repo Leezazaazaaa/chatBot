@@ -15,7 +15,7 @@ class WeatherTest {
 		WeatherData data = new WeatherData(location);
 		Weather test = new Weather(data);
 		
-		double expected = 17.91; //the expected value might not be same all the time as the weather keeps changing
+		double expected = 17.76; //the expected value might not be same all the time as the weather keeps changing
 		double actual = test.getActualTemp();
 		assertEquals (expected, actual, 0.1); //equating the value with the epsilon of 0.1
 	}
@@ -78,6 +78,18 @@ class WeatherTest {
 		double expected = 18.0;  //the expected value might not be same all the time as the weather keeps changing
 		double actual = test.getFeelsLike();
 		assertEquals (expected, actual, 0.1); //equating the value with the epsilon of 0.1
+	}
+	
+	//testing the description of weather 
+	@Test
+	void testGetDescription() throws IOException {
+		String location = "Brisbane,AU";
+		WeatherData data = new WeatherData(location);
+		Weather test = new Weather(data);
+		
+		String expected = "clear sky"; //the expected description might change according to the weather
+		String actual = test.getDescription();
+		assertEquals (expected, actual);
 	}
 
 
