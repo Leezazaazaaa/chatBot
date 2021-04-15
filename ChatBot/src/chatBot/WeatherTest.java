@@ -48,11 +48,23 @@ class WeatherTest {
 	@Test
 	void testGetHumidity() throws IOException {
 		String location = "Brisbane,AU";
-		WeatherData data = new WeatherData(location); //the expected value might not be same all the time as the weather keeps changing
+		WeatherData data = new WeatherData(location); 
 		Weather test = new Weather(data);
 		
-		double expected = 88.0;
+		double expected = 88.0; //the expected value might not be same all the time as the weather keeps changing
 		double actual = test.getHumidity();
+		assertEquals (expected, actual, 0.1); //equating the value with the epsilon of 0.1
+	}
+	
+	//testing the pressure
+	@Test
+	void testGetPressure() throws IOException {
+		String location = "Brisbane,AU";
+		WeatherData data = new WeatherData(location);
+		Weather test = new Weather(data);
+		
+		double expected = 1015.0;  //the expected value might not be same all the time as the weather keeps changing
+		double actual = test.getPressure();
 		assertEquals (expected, actual, 0.1); //equating the value with the epsilon of 0.1
 	}
 
