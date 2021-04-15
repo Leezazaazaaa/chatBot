@@ -213,5 +213,20 @@ class WeatherDataTest {
 		
 		assertEquals(expected, actual); //the expected values keeps on updating because the weather changes continuously 
 	}
+	
+	//testing the description of JSON object 
+	@Test
+	void testGetDescription() throws IOException {
+		String location = "Brisbane,AU";
+		WeatherData test = new WeatherData(location);
+		
+		String expected="{\"icon\":\"01n\",\"description\":\"clear sky\",\"main\":\"Clear\",\"id\":800}";
+		JSONObject actual = test.getDescription();
+		String actual2 = actual.toString();
+		
+		assertEquals(expected, actual2); 
+	}
+	
+	
 		
 }
