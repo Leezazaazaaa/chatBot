@@ -43,5 +43,18 @@ class WeatherTest {
 		double actual = test.getMaxTemp();
 		assertEquals (expected, actual, 0.1); //equating the value with the epsilon of 0.1
 	}
+	
+	//testing the humidity
+	@Test
+	void testGetHumidity() throws IOException {
+		String location = "Brisbane,AU";
+		WeatherData data = new WeatherData(location); //the expected value might not be same all the time as the weather keeps changing
+		Weather test = new Weather(data);
+		
+		double expected = 88.0;
+		double actual = test.getHumidity();
+		assertEquals (expected, actual, 0.1); //equating the value with the epsilon of 0.1
+	}
+
 
 }
