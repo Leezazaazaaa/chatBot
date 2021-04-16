@@ -1,4 +1,4 @@
-package chatBot;
+package weatherBot;
 
 import java.io.IOException;
 

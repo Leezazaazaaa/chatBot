@@ -1,4 +1,4 @@
-package chatBot;
+package weatherBot;
 
 import static org.junit.jupiter.api.Assertions.*;
 

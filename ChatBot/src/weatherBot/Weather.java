@@ -1,4 +1,4 @@
-package chatBot;
+package weatherBot;
 
 /*
  * This Class stores all essential information we want to be used by the bot. Info extracted from WeatherData
