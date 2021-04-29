@@ -3,7 +3,14 @@ package chatBot;
 import java.io.*;
 import java.util.*;
 
-public class ChatBot {	
+
+
+public class ChatBot  extends Weather{	
+
+	public ChatBot(WeatherData data) {
+		super(data);
+		
+	}
 
 	public void createFile() {		
 	    try {
@@ -21,7 +28,12 @@ public class ChatBot {
 	
 	public String[] Responses() {
 		String[] responses = {"hello - Hi there! How are you?", 
-						 	  "good - That's good to hear!"};
+						 	  "good - That's good to hear!",
+						 	  "what is your name? - My name is ChatBot",
+						 	  "help - Enter input into the console and receive a response.",
+						 	  "bye - Goodbye!",
+						 	  "what is the weather? - it is (answer)",
+						 	  "what should i wear? - You Should Wear (answer)"};
 		return responses;
 	}
 	
@@ -124,12 +136,32 @@ public class ChatBot {
     }
     
     public void startChatBot() {
-        String userInput, response, temp, cuurentWeather;
-        String filename = "responses.txt";
+        String userInput, response, temp, currentWeather;
+        String filename = "responses.txt";     
         
         int lines = getLines(filename);
         String[] responsesArray = getResponsesArray(filename, lines);
         displayMenu(true);
+        
+        do {
+            userInput = getUserInput();
+            
+            response = getResponse(responsesArray, userInput);
+            
+            if(userInput.contains("weather")) {
+            	if(getActualTemp() >= 15) {
+            		currentWeather = String.valueOf(getActualTemp());
+            		temp = response.replace("(answer)", currentWeather);
+            		response = temp;
+            	}
+            }
+            
+            System.out.println("Chatbot: " + response);
+
+            if(!userInput.equals("bye")) {
+                displayMenu(false);			//display will turn off when "bye" is said
+            }
+        } while(!userInput.equals("bye"));	//loop will only run until the user says "bye"
     }
     
     

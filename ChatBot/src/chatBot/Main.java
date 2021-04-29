@@ -20,7 +20,7 @@ public class Main {
 		System.out.println("\ncurrent temp: "+info.getActualTemp()+"C");
 		System.out.println("\nWeather Conditions: "+info.getDescription());
 		
-		ChatBot chat = new ChatBot();
+		ChatBot chat = new ChatBot(d);
 		chat.createFile();
 		chat.setResponses();
 		chat.startChatBot();
