@@ -6,8 +6,7 @@ import java.util.*;
 public class ChatBot {
 	
 
-	public void createFile() {
-		
+	public void createFile() {		
 	    try {
 	    	File file = new File("responses.txt");
 	        if (file.createNewFile()) {
@@ -18,8 +17,21 @@ public class ChatBot {
 	      } catch (IOException e) {
 	        System.out.println("An error occurred.");
 	        e.printStackTrace();
+	      }		
+	}
+	
+	
+	
+	public void setResponses() {
+	    try {
+	        FileWriter myWriter = new FileWriter("responses.txt");
+	        myWriter.write("Files in Java might be tricky, but it is fun enough!");
+	        myWriter.close();
+	        System.out.println("Successfully wrote to the file.");
+	      } catch (IOException e) {
+	        System.out.println("An error occurred.");
+	        e.printStackTrace();
 	      }
-		
 	}
 	
     public static void displayMenu(boolean startup) {		
