@@ -39,5 +39,31 @@ public class ChatBot {
         
         return userInput;
     }
+    
+    public static String[] getResponsesArray(String filename, int lines) {
+        int lineCount = 0;
+        
+        String line;
+        String[] responsesArray = new String[lines];
+        
+        try(BufferedReader br = new BufferedReader(
+                new FileReader(filename))) {
+            
+            do {
+                line = br.readLine();
+                
+                if(line != null) {
+                    responsesArray[lineCount] = line;
+                    lineCount++;
+                }
+            } while(line != null);
+        } catch(FileNotFoundException exc) {
+            System.out.println("FileNotFoundException: " + exc);
+        } catch(IOException exc) {
+            System.out.println("I/O Exception: " + exc);
+        }
+        
+        return responsesArray;
+    }
 	
 }
