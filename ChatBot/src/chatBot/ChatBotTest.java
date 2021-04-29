@@ -2,7 +2,10 @@ package chatBot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 
 import org.junit.jupiter.api.Test;
 
@@ -91,5 +94,20 @@ class ChatBotTest {
 		assertEquals(expected, actual);
 			
 	}
+	
+	@Test
+	void testGetLines() throws IOException {
+		String location = "Brisbane,AU";
+		WeatherData data = new WeatherData(location);
+		ChatBot test = new ChatBot(data);
+		
+		int expected = 0; //expected value is 0 because initially there is no lines created
+		int actual = ChatBot.getLines(location);
+		assertEquals(expected, actual);
+			
+	}
+	
+	
+	
 
 }
