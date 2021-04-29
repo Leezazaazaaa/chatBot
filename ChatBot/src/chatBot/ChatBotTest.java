@@ -31,5 +31,17 @@ class ChatBotTest {
 		assertEquals(expected, actual);
 			
 	}
+	
+	@Test
+	void testResponses3() throws IOException { //checking the text command "what is your name? - My name is ChatBot" from response method
+		String location = "Brisbane,AU";
+		WeatherData data = new WeatherData(location);
+		ChatBot test = new ChatBot(data);
+		
+		String expected = "what is your name? - My name is ChatBot";
+		String actual = test.Responses()[2];
+		assertEquals(expected, actual);
+			
+	}
 
 }
