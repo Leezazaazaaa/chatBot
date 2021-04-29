@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class ChatBotTest {
 
 	@Test
-	void testResponses1() throws IOException { 
+	void testResponses1() throws IOException { //method that test if the 1st command of the response array
 		String location = "Brisbane,AU";
 		WeatherData data = new WeatherData(location);
 		ChatBot test = new ChatBot(data);
@@ -24,7 +24,7 @@ class ChatBotTest {
 	}
 	
 	@Test
-	void testResponses2() throws IOException {
+	void testResponses2() throws IOException { //method that test if the 2nd command of the response array
 		String location = "Brisbane,AU";
 		WeatherData data = new WeatherData(location);
 		ChatBot test = new ChatBot(data);
@@ -36,7 +36,7 @@ class ChatBotTest {
 	}
 	
 	@Test
-	void testResponses3() throws IOException { //checking the text command "what is your name? - My name is ChatBot" from response method
+	void testResponses3() throws IOException { //method that test if the 3rd command of the response array
 		String location = "Brisbane,AU";
 		WeatherData data = new WeatherData(location);
 		ChatBot test = new ChatBot(data);
@@ -48,7 +48,7 @@ class ChatBotTest {
 	}
 	
 	@Test
-	void testResponses4() throws IOException {
+	void testResponses4() throws IOException { //method that test if the 4th command of the response array
 		String location = "Brisbane,AU";
 		WeatherData data = new WeatherData(location);
 		ChatBot test = new ChatBot(data);
@@ -60,7 +60,7 @@ class ChatBotTest {
 	}
 	
 	@Test
-	void testResponses5() throws IOException {
+	void testResponses5() throws IOException { //method that test if the 5th command of the response array
 		String location = "Brisbane,AU";
 		WeatherData data = new WeatherData(location);
 		ChatBot test = new ChatBot(data);
@@ -72,7 +72,7 @@ class ChatBotTest {
 	}
 	
 	@Test
-	void testResponses6() throws IOException {
+	void testResponses6() throws IOException { //method that test if the 6th command of the response array
 		String location = "Brisbane,AU";
 		WeatherData data = new WeatherData(location);
 		ChatBot test = new ChatBot(data);
@@ -84,7 +84,7 @@ class ChatBotTest {
 	}
 	
 	@Test
-	void testResponses7() throws IOException {
+	void testResponses7() throws IOException { //method that test if the 7th command of the response array
 		String location = "Brisbane,AU";
 		WeatherData data = new WeatherData(location);
 		ChatBot test = new ChatBot(data);
@@ -96,7 +96,7 @@ class ChatBotTest {
 	}
 	
 	@Test
-	void testGetLines() throws IOException {
+	void testGetLines() throws IOException { //test method to get the total amount of lines in filename
 		String location = "Brisbane,AU";
 		WeatherData data = new WeatherData(location);
 		ChatBot test = new ChatBot(data);
@@ -108,12 +108,24 @@ class ChatBotTest {
 	}
 	
 	@Test
-	void testGetUserInput() throws IOException {
+	void testGetUserInput() throws IOException { //test method that gets the user's input
 		String location = "Brisbane,AU";
 		WeatherData data = new WeatherData(location);
 		
 		String expected = "Hi"; //checks if the method takes what the user has entered
 		String actual = ChatBot.getUserInput();
+		assertEquals(expected, actual);
+			
+	}
+	
+	@Test
+	void testGetResponsesArray() throws IOException { //method that retrieves all responses from text file
+		String location = "Brisbane,AU";
+		WeatherData data = new WeatherData(location);
+		ChatBot test = new ChatBot(data);
+
+		String expected = null; //initially file is empty so the return value is null
+		String actual = ChatBot.getResponsesArray(location, 1 )[0];
 		assertEquals(expected, actual);
 			
 	}
