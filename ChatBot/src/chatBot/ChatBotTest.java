@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class ChatBotTest {
 
 	@Test
-	void testResponses1() throws IOException {
+	void testResponses1() throws IOException { 
 		String location = "Brisbane,AU";
 		WeatherData data = new WeatherData(location);
 		ChatBot test = new ChatBot(data);
