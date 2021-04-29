@@ -123,8 +123,11 @@ public class ChatBot {
         return "No response...";								
     }
     
-    String userInput, response, temp, cuurentWeather;
-    String filename = "src/chatbot/responses.txt";
+    public void startChatBot() {
+        String userInput, response, temp, cuurentWeather;
+        String filename = "responses.txt";
+    }
+    
     
     
     
