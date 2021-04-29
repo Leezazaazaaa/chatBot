@@ -86,5 +86,10 @@ public class ChatBot {
     }
     
     String userInput, response, temp, cuurentWeather;
+    
+    
+    
+    
+    
 	
 }
