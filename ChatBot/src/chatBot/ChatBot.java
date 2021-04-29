@@ -126,6 +126,10 @@ public class ChatBot {
     public void startChatBot() {
         String userInput, response, temp, cuurentWeather;
         String filename = "responses.txt";
+        
+        int lines = getLines(filename);
+        String[] responsesArray = getResponsesArray(filename, lines);
+        displayMenu(true);
     }
     
     
