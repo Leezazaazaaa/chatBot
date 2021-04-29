@@ -24,5 +24,20 @@ public class ChatBot {
         
         return lines;
     }
+    
+    public static String getUserInput() {
+        String userInput = null;
+        
+        try {
+            BufferedReader br = new BufferedReader(
+                new InputStreamReader(System.in));
+            
+            userInput = br.readLine();						//the user input is stored inside of userInput
+        } catch(IOException exc) {
+            System.out.println("I/O Exception: " + exc);
+        }
+        
+        return userInput;
+    }
 	
 }
