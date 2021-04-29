@@ -65,5 +65,24 @@ public class ChatBot {
         
         return responsesArray;
     }
+    
+    public static String getResponse(String[] responses, String userInput) {
+        String tag, response;
+        String[] array;
+        
+        for(String responseLine: responses) {
+            if(responseLine != null) {
+                array = responseLine.split(" - ");				
+                tag = array[0];									
+                response = array[1];					
+                
+                if(tag.compareToIgnoreCase(userInput) == 0) {	
+                    return response;							
+                }
+            }
+        }
+        
+        return "No response...";								
+    }
 	
 }
