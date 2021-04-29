@@ -107,6 +107,16 @@ class ChatBotTest {
 			
 	}
 	
+	@Test
+	void testGetUserInput() throws IOException {
+		String location = "Brisbane,AU";
+		WeatherData data = new WeatherData(location);
+		
+		String expected = "Hi"; //checks if the method takes what the user has entered
+		String actual = ChatBot.getUserInput();
+		assertEquals(expected, actual);
+			
+	}
 	
 	
 
