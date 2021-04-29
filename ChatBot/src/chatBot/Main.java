@@ -22,7 +22,7 @@ public class Main {
 		
 		ChatBot chat = new ChatBot();
 		chat.createFile();
-		
+		chat.setResponses();
 		
 		/*
 		 * TODO: More JUNIT testing, hard because data is always changing 

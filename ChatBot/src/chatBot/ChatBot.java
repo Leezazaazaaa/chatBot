@@ -3,8 +3,7 @@ package chatBot;
 import java.io.*;
 import java.util.*;
 
-public class ChatBot {
-	
+public class ChatBot {	
 
 	public void createFile() {		
 	    try {
@@ -20,18 +19,28 @@ public class ChatBot {
 	      }		
 	}
 	
-	
+	public String[] Responses() {
+		String[] responses = {"hello - Hi there! How are you?", 
+						 	  "good - That's good to hear!"};
+		return responses;
+	}
 	
 	public void setResponses() {
+		String[] responses = Responses();
+		
+		
 	    try {
 	        FileWriter myWriter = new FileWriter("responses.txt");
-	        myWriter.write("Files in Java might be tricky, but it is fun enough!");
+	        for(int i = 0; i < responses.length; i++) {
+	        myWriter.write(responses[i] + "\n");
+	        }
 	        myWriter.close();
 	        System.out.println("Successfully wrote to the file.");
 	      } catch (IOException e) {
 	        System.out.println("An error occurred.");
 	        e.printStackTrace();
 	      }
+		
 	}
 	
     public static void displayMenu(boolean startup) {		
