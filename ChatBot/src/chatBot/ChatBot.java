@@ -4,7 +4,24 @@ import java.io.*;
 import java.util.*;
 
 public class ChatBot {
+	
 
+	public void createFile() {
+		
+	    try {
+	    	File file = new File("responses.txt");
+	        if (file.createNewFile()) {
+	          System.out.println("File created: " + file.getName());
+	        } else {
+	          System.out.println("File already exists.");
+	        }
+	      } catch (IOException e) {
+	        System.out.println("An error occurred.");
+	        e.printStackTrace();
+	      }
+		
+	}
+	
     public static void displayMenu(boolean startup) {		
         if(startup) {											
             System.out.println("Please enter a command.");		
@@ -86,7 +103,7 @@ public class ChatBot {
     }
     
     String userInput, response, temp, cuurentWeather;
-    
+    String filename = "src/chatbot/responses.txt";
     
     
     

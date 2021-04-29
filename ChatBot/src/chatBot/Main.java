@@ -20,6 +20,9 @@ public class Main {
 		System.out.println("\ncurrent temp: "+info.getActualTemp()+"C");
 		System.out.println("\nWeather Conditions: "+info.getDescription());
 		
+		ChatBot chat = new ChatBot();
+		chat.createFile();
+		
 		
 		/*
 		 * TODO: More JUNIT testing, hard because data is always changing 
