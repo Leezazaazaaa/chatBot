@@ -11,5 +11,18 @@ public class ChatBot {
         }
         System.out.print("> ");									
     }
+    
+    public static int getLines(String filename) {				
+        int lines = 0;
+        
+        try(BufferedReader br = new BufferedReader(			
+                new FileReader(filename))) {
+            while(br.readLine() != null) lines++;
+        } catch(IOException exc) {
+            System.out.println("I/O Exception: " + exc);
+        }
+        
+        return lines;
+    }
 	
 }
