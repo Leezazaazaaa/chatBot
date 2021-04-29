@@ -84,5 +84,7 @@ public class ChatBot {
         
         return "No response...";								
     }
+    
+    String userInput, response, temp, cuurentWeather;
 	
 }
