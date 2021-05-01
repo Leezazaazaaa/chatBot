@@ -3,13 +3,14 @@ package chatBot;
 import java.io.*;
 import java.util.*;
 
-
-
 public class ChatBot  extends Weather{	
 
 	public ChatBot(WeatherData data) {
-		super(data);
-		
+		super(data);		
+	}
+	
+	public WeatherData getData(WeatherData data) {
+		return data;
 	}
 	
 	public String[] Responses() {	//temporary method for how the user's input and ChatBot's responses are managed
@@ -105,7 +106,8 @@ public class ChatBot  extends Weather{
     
     public void startChatBot(WeatherData data) {		//Start chatBot
         String userInput, response, temp, currentWeather;
-        String filename = "responses.txt";     
+        String filename = "responses.txt";   
+        ChatBotWeather validation = new ChatBotWeather(data);
         
         int lines = getLines(filename);
         String[] responsesArray = getResponsesArray(filename, lines);
@@ -116,13 +118,7 @@ public class ChatBot  extends Weather{
             
             response = getResponse(responsesArray, userInput);	//retrieves correct response to user's input
             
-            if(userInput.contains("weather")) {			//checks if user is asking for weather
-            	if(getActualTemp() >= 15) {				//checks the temperature(not necessary, but will be useful later)
-            		currentWeather = String.valueOf(getActualTemp());	//sets the data into a String
-            		temp = response.replace("(answer)", currentWeather);	//changes (answer) to correct piece of data
-            		response = temp;	
-            	}
-            }
+            response = validation.outputValidation(response, userInput);
             
             System.out.println("Chatbot: " + response);	//outputs the full response
 
