@@ -4,4 +4,7 @@ what is your name? - My name is ChatBot
 help - Enter input into the console and receive a response.
 bye - Goodbye!
 what is the weather? - it is (answer)
+what is the temperature? - it is (answer)
+what is the humidity? - it is (answer)
+what is the pressure? - it is (answer)
 what should i wear? - You Should Wear (answer)
