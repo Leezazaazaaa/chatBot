@@ -103,7 +103,7 @@ public class ChatBot  extends Weather{
         return "No response...";							//else returns No Response...		
     }
     
-    public void startChatBot() {		//Start chatBot
+    public void startChatBot(WeatherData data) {		//Start chatBot
         String userInput, response, temp, currentWeather;
         String filename = "responses.txt";     
         

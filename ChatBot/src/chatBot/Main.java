@@ -21,7 +21,7 @@ public class Main {
 		System.out.println("\nWeather Conditions: "+info.getDescription());
 		
 		ChatBot chat = new ChatBot(d);
-		chat.startChatBot();
+		chat.startChatBot(d);
 		
 		/*
 		 * TODO: More JUNIT testing, hard because data is always changing 
