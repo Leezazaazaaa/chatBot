@@ -23,24 +23,6 @@ public class ChatBot  extends Weather{
 		return responses;	//returns the full String array
 	}
 	
-	public void setResponses() {	//writes inputs and outputs into the text file responses
-		String[] responses = Responses();
-		
-		
-	    try {
-	        FileWriter myWriter = new FileWriter("responses.txt");
-	        for(int i = 0; i < responses.length; i++) {	//to loop through all indexes of the String array
-	        myWriter.write(responses[i] + "\n");	//writes into file 
-	        }
-	        myWriter.close();	//closes file
-	        System.out.println("Successfully wrote to the file.");	//confirmation message
-	      } catch (IOException e) {
-	        System.out.println("An error occurred.");
-	        e.printStackTrace();
-	      }
-		
-	}
-	
     public static void displayMenu(boolean startup) {		//displays greeting
         if(startup) {											
             System.out.println("Please enter a command.");		
