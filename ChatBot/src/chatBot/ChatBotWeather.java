@@ -34,4 +34,31 @@ public class ChatBotWeather extends ChatBot{
 		return response;
 	}
 	
+	public String clothingSuggestion(String response) {
+		String cold = "bottoms and a jacket";
+		String mild = "bottoms and a hoodie";
+		String warm = "bottoms and a top";
+		String hot = "shorts and a top";
+		int currentWeather = (int) getActualTemp();
+		String temp;
+		
+		if(currentWeather < 6) {			
+			temp = response.replace("(answer)", cold);	
+			response = temp;
+		}
+		else if(currentWeather < 12) {
+			temp = response.replace("(answer)", mild);	
+			response = temp;
+		}
+		else if(currentWeather < 18) {
+			temp = response.replace("(answer)", warm);	
+			response = temp;
+		}
+		else if(currentWeather >= 18) {
+			temp = response.replace("(answer)", hot);	
+			response = temp;
+		}
+		return response;
+	}
+	
 }
