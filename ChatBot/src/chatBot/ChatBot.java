@@ -11,20 +11,6 @@ public class ChatBot  extends Weather{
 		super(data);
 		
 	}
-
-	public void createFile() {		//Creates a new file
-	    try {
-	    	File file = new File("responses.txt");	//the file's location will be stored as file
-	        if (file.createNewFile()) {		//checks if that file was just created
-	          System.out.println("File created: " + file.getName());	//outputs a confirmation message
-	        } else {										//else if file was not created
-	          System.out.println("File already exists.");	//file already exists
-	        }
-	      } catch (IOException e) {						//catches an error
-	        System.out.println("An error occurred.");
-	        e.printStackTrace();
-	      }		
-	}
 	
 	public String[] Responses() {	//temporary method for how the user's input and ChatBot's responses are managed
 		String[] responses = {"hello - Hi there! How are you?", //String array holds all inputs and outputs, separated by a semi-colon
