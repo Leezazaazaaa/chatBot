@@ -1,30 +1,32 @@
 package chatBot;
 
+import java.io.IOException;
+
 public class ChatBotWeather extends ChatBot{
 
-	public ChatBotWeather(WeatherData data) {
-		super(data);
+	public ChatBotWeather(String location) throws IOException {
+		super(location);
 	}
 	
 	public String outputValidation(String response, String userInput) {	//Validation of data retrieved from WeatherAPI
 		String currentWeather, temp;
 		if(userInput.contains("weather")) {
-    		currentWeather = String.valueOf(getDescription() );	//sets the data into a String
+    		currentWeather = String.valueOf(this.getCurrent().getWeather_desc() );	//sets the data into a String //*
     		temp = response.replace("(answer)", currentWeather);	//changes (answer) to correct piece of data
     		response = temp;
 		}
 		else if(userInput.contains("temperature")) {
-    		currentWeather = String.valueOf(getActualTemp() );	//sets the data into a String
+    		currentWeather = String.valueOf(this.getCurrent().getTemp_current() );	//sets the data into a String //*
     		temp = response.replace("(answer)", currentWeather);	//changes (answer) to correct piece of data
     		response = temp;
 		}
 		else if(userInput.contains("humidity")){
-    		currentWeather = String.valueOf(getHumidity() );	//sets the data into a String
+    		currentWeather = String.valueOf(this.getCurrent().getHumidity());	//sets the data into a String //*
     		temp = response.replace("(answer)", currentWeather);	//changes (answer) to correct piece of data
     		response = temp;
 		}
 		else if(userInput.contains("pressure")){
-    		currentWeather = String.valueOf(getPressure() );	//sets the data into a String
+    		currentWeather = String.valueOf(this.getCurrent().getPressure());	//sets the data into a String //*
     		temp = response.replace("(answer)", currentWeather);	//changes (answer) to correct piece of data
     		response = temp;
 		}
@@ -39,7 +41,7 @@ public class ChatBotWeather extends ChatBot{
 		String mild = "bottoms and a hoodie";
 		String warm = "bottoms and a top";
 		String hot = "shorts and a top";
-		int currentWeather = (int) getActualTemp();
+		int currentWeather = (int) this.getCurrent().getTemp_current();//*
 		String temp;
 		
 		if(currentWeather < 6) {			

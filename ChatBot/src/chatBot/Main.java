@@ -1,6 +1,8 @@
 package chatBot;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -23,29 +25,37 @@ public class Main extends Application{
 	}
 	
 	public static void main(String[] args) throws IOException{
-		launch(args);
+		//launch(args);
 		
 		//Example of how to use the Weather class
 		
-		WeatherData d = new WeatherData("Brisbane,AU");//step1: Create a WeatherData object by sending a location
+		WeatherData d = new WeatherData("Dublin,IE");//step1: Create a WeatherData object by sending a location
 		
-		d.display();//You can display its contents like so
+		double lon=d.getCoords().getDouble("lon");
+		double lat=d.getCoords().getDouble("lat");
 		
-		Weather info = new Weather(d);//Step 2: create a Weather Object from the WeatherData Object
+		//Weather day1 = d.getEightDayForcast()[0];
 		
-		// you now have access to all the info you want.
-		System.out.println("\ncurrent temp: "+info.getActualTemp()+"C");
-		System.out.println("\nWeather Conditions: "+info.getDescription());
 		
-		ChatBot chat = new ChatBot(d);
-		chat.startChatBot(d);
+		System.out.println("time of execution: "+d.getCurrent().getDateTime()+"\nLongitude: "+lon+"\tLatitude: "+lat);
+		Weather today = d.getCurrent();
+		today.display();
+		Weather[] forecast = d.getEightDayForcast();
 		
-		/*
-		 * TODO: More JUNIT testing, hard because data is always changing 
-		 * 
-		 */
+		for(int i=0;i<forecast.length;i++) {
+			forecast[i].display();
+		}
+		
+		
+		//d.getCurrent();
+		//System.out.println(days.getMain());
+		//ChatBot chat = new ChatBot(d);
+		//chat.startChatBot(d);
+		
+		
 		
 		
 	}
+	
 
 }

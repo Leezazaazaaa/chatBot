@@ -3,10 +3,10 @@ package chatBot;
 import java.io.*;
 import java.util.*;
 
-public class ChatBot  extends Weather{	
+public class ChatBot  extends WeatherData{	
 
-	public ChatBot(WeatherData data) {
-		super(data);		
+	public ChatBot(String location) throws IOException {
+		super(location);		
 	}
 	
 	public WeatherData getData(WeatherData data) {
@@ -104,10 +104,10 @@ public class ChatBot  extends Weather{
         return "No response...";							//else returns No Response...		
     }
     
-    public void startChatBot(WeatherData data) {		//Start chatBot
+    public void startChatBot(WeatherData data) throws IOException {		//Start chatBot
         String userInput, response, temp, currentWeather;
         String filename = "responses.txt";   
-        ChatBotWeather validation = new ChatBotWeather(data);
+        ChatBotWeather validation = new ChatBotWeather(data.getLocation());
         
         int lines = getLines(filename);
         String[] responsesArray = getResponsesArray(filename, lines);
