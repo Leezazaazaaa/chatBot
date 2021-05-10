@@ -25,7 +25,7 @@ public class Main extends Application{
 	}
 	
 	public static void main(String[] args) throws IOException{
-		//launch(args);
+		launch(args);
 		
 		//Example of how to use the Weather class
 		
@@ -47,10 +47,8 @@ public class Main extends Application{
 		}
 		
 		
-		//d.getCurrent();
-		//System.out.println(days.getMain());
-		//ChatBot chat = new ChatBot(d);
-		//chat.startChatBot(d);
+		ChatBot chat = new ChatBot("Dublin,IE");
+		chat.startChatBot(d);
 		
 		
 		
