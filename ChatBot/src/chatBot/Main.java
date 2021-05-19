@@ -21,6 +21,7 @@ public class Main {
 		System.out.println("\nWeather Conditions: "+info.getDescription());
 		
 		ChatBot chat = new ChatBot(d);
+		
 		chat.startChatBot(d);
 		
 		/*

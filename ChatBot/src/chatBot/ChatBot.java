@@ -5,6 +5,8 @@ import java.util.*;
 
 public class ChatBot  extends Weather{	
 
+	public String response;
+	
 	public ChatBot(WeatherData data) {
 		super(data);		
 	}
@@ -105,7 +107,8 @@ public class ChatBot  extends Weather{
     }
     
     public void startChatBot(WeatherData data) {		//Start chatBot
-        String userInput, response, temp, currentWeather;
+        String userInput, temp, currentWeather;
+  
         String filename = "responses.txt";   
         ChatBotWeather validation = new ChatBotWeather(data);
         
@@ -120,15 +123,26 @@ public class ChatBot  extends Weather{
             
             response = validation.outputValidation(response, userInput);
             
-            System.out.println("Chatbot: " + response);	//outputs the full response
-
+    		if(userInput.contains("holidays")) {
+    			printResponse();
+    			ChatBotWeather.chatBotLocations();
+    			response = "Thank you ";
+    			printResponse();
+    			
+    		}
+    		else {
+    			printResponse();
+    		}
+            
             if(!userInput.equals("bye")) {
                 displayMenu(false);			//display will turn off when "bye" is said
             }
         } while(!userInput.equals("bye"));	//loop will only run until the user says "bye"
     }
     
-    
+    public void printResponse() {
+    	System.out.println("Chatbot: " + response);	//outputs the full response
+    }
     
     
     

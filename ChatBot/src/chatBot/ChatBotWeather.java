@@ -2,9 +2,12 @@ package chatBot;
 
 public class ChatBotWeather extends ChatBot{
 
+	
+	
 	public ChatBotWeather(WeatherData data) {
 		super(data);
 	}
+	
 	
 	public String outputValidation(String response, String userInput) {	//Validation of data retrieved from WeatherAPI
 		String currentWeather, temp;
@@ -60,5 +63,17 @@ public class ChatBotWeather extends ChatBot{
 		}
 		return response;
 	}
+	
+	public static String[] chatBotLocations() {
+		String[] userSelectedLocations = new String[5];
+		
+		for(int i = 0; i <= 4 ; i++) {
+			String locationTemp = getUserInput();
+			System.out.println(locationTemp);			
+		}
+		return userSelectedLocations;
+	}
+	
+	
 	
 }
