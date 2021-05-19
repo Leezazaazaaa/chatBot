@@ -10,5 +10,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="/Users/leeza/Desktop/sphinx4-core-5prealpha.jar"/>
 	<classpathentry kind="lib" path="/Users/leeza/Desktop/sphinx4-data-5prealpha.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
