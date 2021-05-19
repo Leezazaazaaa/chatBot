@@ -37,8 +37,9 @@ public class Voice {
 					// you now have access to all the info you want.
 					System.out.println("\ncurrent temp: "+info.getActualTemp()+"C");
 					System.out.println("\nWeather Conditions: "+info.getDescription());
-					
-					
+						
+			 }else if(command.equalsIgnoreCase("How are you ")) {
+				 
 			 }
 			 
 			 if(work != null) {
