@@ -8,13 +8,30 @@ public class chatBotValues {	//stores values from GUI
 	private String botOutput;	//chatbot output
 	private String location = "Dublin,IE";	//location	
 	private boolean insertingLocation = false;
+	private int counter;
 
 	public chatBotValues() {
 		super();
 		this.userInput = userInput;
 		this.botOutput = botOutput;
 		this.location = location;
+		counter = 0;
 	}
+	
+
+	public void increment ( ) {
+		counter++;
+	}
+	
+	public void reset ( ) {
+		counter = 0;
+	}
+	
+	public int value ( ) {
+		return counter;
+	}
+	
+	
 
 	public String getUserInput() {
 		return userInput;

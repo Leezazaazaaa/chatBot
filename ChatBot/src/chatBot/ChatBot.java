@@ -8,6 +8,7 @@ public class ChatBot extends WeatherData{
 	Controller con = new Controller(); 
 	WeatherData data; 
 	static chatBotValues cb = new chatBotValues();
+	static List<String> selectedFiveLocations = new ArrayList<String>();  
 	
 	public ChatBot(String location) throws IOException {
 		super(location);		
@@ -141,7 +142,49 @@ public class ChatBot extends WeatherData{
             }   
     }
     
-
+    public static void allocateData() {
+    	selectedFiveLocations.add(cb.getUserInput());
+    }
+    
+    
+	public void retriveFiveDayData() {
+		WeatherDataStored wds = new WeatherDataStored();
+		int i = 0;
+		while(selectedFiveLocations.size() < i) {
+			
+			
+			
+			
+		}
+		
+		
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public static String chatGUI(String input) {   //This method links the chatbot's inputs and outputs with the GUI's inputs and outputs
     	 
     	
@@ -150,10 +193,13 @@ public class ChatBot extends WeatherData{
   	
     	String output = cb.getBotOutput();  	
     	
-    	if(cb.getUserInput().contains("location") || cb.getInsertingLocation() == false) {	//checks whether the user is changing locations
-    		if(cb.getUserInput().contains("location")) {
+    	if(cb.getUserInput().contains("location") || cb.getInsertingLocation() == false || cb.getUserInput().contains("holiday")) {	//checks whether the user is changing locations
+
+    		if(cb.getUserInput().contains("location") || cb.getUserInput().contains("holiday")) {
     		cb.setInsertingLocation(true);
+    		cb.reset();
     		}
+
     	System.out.println(cb.getInsertingLocation());
     	try {
 			cb.runStartMethod();		//runs whole chatbot and gets correct output processed
@@ -162,22 +208,25 @@ public class ChatBot extends WeatherData{
 			e.printStackTrace();
 		}
     	}
-    	else {											//if the user is changing locations
-    		System.out.println(cb.getInsertingLocation());
-    		cb.setInsertingLocation(false);
-    		System.out.println(cb.getInsertingLocation());
-    		cb.setBotOutput("Lovely Place");
-    		cb.setLocation(input);		//location set as user's input
-    		
+    	else {	
+    		selectedFiveLocations.add(cb.getUserInput());
+    															//if the user is changing locations    		
+    		cb.setBotOutput(input + "! Wow, Lovely Place");
+    		cb.setLocation(input);		//location set as user's input   		
+    		cb.increment();
+    		if(cb.value() == 5) {
+    			cb.setInsertingLocation(false);
+    			cb.reset();
+    			cb.setBotOutput("Amazing!");
+    		}
     	}
     	System.out.println("User Input: " + cb.getUserInput());
     	System.out.println("Chatbot's Response: " + cb.getBotOutput());
     	System.out.println("Current Selected Location: " + cb.getLocation());
+    	System.out.println("Current Counter is: " + cb.value());
     	output = cb.getBotOutput();		//gets output after it has been validated
     	return output;   	
     }
-    
-    
      
 	
 }
