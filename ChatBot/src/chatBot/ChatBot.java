@@ -3,7 +3,7 @@ package chatBot;
 import java.io.*;
 import java.util.*;
 
-public class ChatBot  extends WeatherData{	
+public class ChatBot extends WeatherData{	
 
 	public ChatBot(String location) throws IOException {
 		super(location);		
@@ -128,7 +128,14 @@ public class ChatBot  extends WeatherData{
         } while(!userInput.equals("bye"));	//loop will only run until the user says "bye"
     }
     
+    Controller con = new Controller();
     
+    public static String chatGUI(String input) {
+    	
+    	
+    	
+    	return input;   	
+    }
     
     
     
