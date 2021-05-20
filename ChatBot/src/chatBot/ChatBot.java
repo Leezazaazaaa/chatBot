@@ -176,6 +176,8 @@ public class ChatBot extends WeatherData{
     	output = cb.getBotOutput();		//gets output after it has been validated
     	return output;   	
     }
+    
+    
      
 	
 }
