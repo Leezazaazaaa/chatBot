@@ -2,7 +2,7 @@ package chatBot;
 
 import java.io.IOException;
 
-public class ChatBotWeather extends ChatBot{
+public class ChatBotWeather extends ChatBot{	
 
 	public ChatBotWeather(String location) throws IOException {
 		super(location);

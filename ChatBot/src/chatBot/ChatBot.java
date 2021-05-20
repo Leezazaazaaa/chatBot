@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class ChatBot extends WeatherData{	
+	
 
 	public ChatBot(String location) throws IOException {
 		super(location);		
@@ -104,7 +105,11 @@ public class ChatBot extends WeatherData{
         return "No response...";							//else returns No Response...		
     }
     
-    public void startChatBot(WeatherData data) throws IOException {		//Start chatBot
+    
+    WeatherData data;
+    static chatBotValues cb = new chatBotValues();
+    
+    public String startChatBot(WeatherData data) throws IOException {		//Start chatBot
         String userInput, response, temp, currentWeather;
         String filename = "responses.txt";   
         ChatBotWeather validation = new ChatBotWeather(data.getLocation());
@@ -113,31 +118,54 @@ public class ChatBot extends WeatherData{
         String[] responsesArray = getResponsesArray(filename, lines);
         displayMenu(true);					//displays greeting
         
-        do {
-            userInput = getUserInput();		//sets user's input as userInput
+//        do {
+            userInput = cb.getUserInput();		//sets user's input as userInput
             
             response = getResponse(responsesArray, userInput);	//retrieves correct response to user's input
             
             response = validation.outputValidation(response, userInput);
             
             System.out.println("Chatbot: " + response);	//outputs the full response
+            
+        	cb.setBotOutput(response);
 
             if(!userInput.equals("bye")) {
                 displayMenu(false);			//display will turn off when "bye" is said
             }
-        } while(!userInput.equals("bye"));	//loop will only run until the user says "bye"
+//        } while(!userInput.equals("bye"));	//loop will only run until the user says "bye"
+        
+        return response;
+        
     }
     
     Controller con = new Controller();
+   
     
-    public static String chatGUI(String input) {
+    public static String chatGUI(String input) {   
+    	
+    	
+    	cb.setUserInput(input);
     	
     	
     	
-    	return input;   	
+    	String output = cb.getBotOutput();
+    	System.out.println(cb.getUserInput());
+    	
+    	
+    	try {
+			cb.runStartMethod();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	System.out.println(cb.getBotOutput());
+    	
+    	output = cb.getBotOutput();
+    	
+    	return output;   	
     }
     
-    
+
     
 	
 }
