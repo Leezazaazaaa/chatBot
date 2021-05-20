@@ -11,5 +11,14 @@
 	<classpathentry kind="lib" path="/Users/leeza/Desktop/sphinx4-core-5prealpha.jar"/>
 	<classpathentry kind="lib" path="/Users/leeza/Desktop/sphinx4-data-5prealpha.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx"/>
+	<classpathentry kind="lib" path="/Users/leeza/Desktop/jar/cmu_time_awb.jar"/>
+	<classpathentry kind="lib" path="/Users/leeza/Desktop/jar/cmu_us_kal.jar"/>
+	<classpathentry kind="lib" path="/Users/leeza/Desktop/jar/cmudict04.jar"/>
+	<classpathentry kind="lib" path="/Users/leeza/Desktop/jar/cmulex.jar"/>
+	<classpathentry kind="lib" path="/Users/leeza/Desktop/jar/cmutimelex.jar"/>
+	<classpathentry kind="lib" path="/Users/leeza/Desktop/jar/en_us.jar"/>
+	<classpathentry kind="lib" path="/Users/leeza/Desktop/jar/freetts-jsapi10.jar"/>
+	<classpathentry kind="lib" path="/Users/leeza/Desktop/jar/freetts.jar"/>
+	<classpathentry kind="lib" path="/Users/leeza/Desktop/jar/mbrola.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
