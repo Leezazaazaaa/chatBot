@@ -3,12 +3,14 @@ package chatBot;
 import java.io.IOException;
 
 public class ChatBotWeather extends ChatBot{	
+	
+	private boolean pendingLocation;
 
 	public ChatBotWeather(String location) throws IOException {
 		super(location);
 	}
 	
-	public String outputValidation(String response, String userInput) {	//Validation of data retrieved from WeatherAPI
+	public String outputValidation(String response, String userInput) {	//Validation of data retrieved from WeatherAPI	
 		String currentWeather, temp;
 		if(userInput.contains("weather")) {
     		currentWeather = String.valueOf(this.getCurrent().getWeather_desc() );	//sets the data into a String //*
@@ -33,15 +35,21 @@ public class ChatBotWeather extends ChatBot{
 		if(userInput.contains("wear")) {
 			response = clothingSuggestion(response);
 		}
+		if(userInput.contains("location")) {
+			pendingLocation = true;
+		}
+		if(pendingLocation == true) {
+			//sets current location
+		}
 		return response;
 	}
 	
-	public String clothingSuggestion(String response) {
+	public String clothingSuggestion(String response) {		//This method suggests clothes to wear
 		String cold = "bottoms and a jacket";
 		String mild = "bottoms and a hoodie";
 		String warm = "bottoms and a top";
 		String hot = "shorts and a top";
-		int currentWeather = (int) this.getCurrent().getTemp_current();//*
+		int currentWeather = (int) this.getCurrent().getTemp_current();//*	//suggests by checking current temperature
 		String temp;
 		
 		if(currentWeather < 6) {			

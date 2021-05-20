@@ -2,15 +2,18 @@ package chatBot;
 
 import java.io.IOException;
 
-public class chatBotValues {
+public class chatBotValues {	//stores values from GUI
 	
-	private String userInput;
-	private String botOutput;
+	private String userInput;	//user input
+	private String botOutput;	//chatbot output
+	private String location = "Dublin,IE";	//location	
+	private boolean insertingLocation = false;
 
 	public chatBotValues() {
 		super();
 		this.userInput = userInput;
 		this.botOutput = botOutput;
+		this.location = location;
 	}
 
 	public String getUserInput() {
@@ -28,11 +31,27 @@ public class chatBotValues {
 	public void setBotOutput(String botOutput) {
 		this.botOutput = botOutput;
 	}
+	
+	public String getLocation() {
+		return location;
+	}
 
-	public void runStartMethod() throws IOException{
-		WeatherData d = new WeatherData("Dublin,IE");
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
+	public boolean getInsertingLocation() {
+		return insertingLocation;
+	}
+
+	public void setInsertingLocation(boolean insertingLocation) {
+		this.insertingLocation = insertingLocation;
+	}
+
+	public void runStartMethod() throws IOException{	//runs method for gathering correct response
+		WeatherData d = new WeatherData(getLocation());
 		
-		ChatBot chat = new ChatBot("Dublin,IE");
+		ChatBot chat = new ChatBot(getLocation());
 		
 		chat.startChatBot(d);
 	}
