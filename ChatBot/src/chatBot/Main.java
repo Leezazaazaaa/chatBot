@@ -37,7 +37,7 @@ public class Main extends Application{
 		double lon=d.getCoords().getDouble("lon");
 		double lat=d.getCoords().getDouble("lat");
 		
-		//Weather day1 = d.getEightDayForcast()[0];
+		Weather day1 = d.getEightDayForcast()[0];
 		
 		
 		System.out.println("time of execution: "+d.getCurrent().getDateTime()+"\nLongitude: "+lon+"\tLatitude: "+lat);

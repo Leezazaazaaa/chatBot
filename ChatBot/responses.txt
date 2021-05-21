@@ -3,10 +3,10 @@ good - That's good to hear!
 what is your name? - My name is ChatBot
 help - Enter input into the console and receive a response.
 bye - Goodbye!
+who created this chatbot? - A great team consisting of Roland, Leeza and Lukas.
 what is the weather? - it is (answer)
 what is the temperature? - it is (answer)
 what is the humidity? - it is (answer)
 what is the pressure? - it is (answer)
 what should i wear? - You Should Wear (answer)
-location - what is the location?
-holiday - Name the locations
+change location - what is the location?

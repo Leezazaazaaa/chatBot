@@ -27,7 +27,7 @@ public class Controller{
 		botReply.setText(input);
 	}
 	
-	public void execute(String input) {									//Retrieves output based on input
+	public void execute(String input) throws IOException {									//Retrieves output based on input
 		response = ChatBot.chatGUI(input);								//runs method in ChatBot class to get response
 		printOutput(response);											//prints output 
 	}
