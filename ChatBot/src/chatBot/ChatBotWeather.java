@@ -2,13 +2,15 @@ package chatBot;
 
 import java.io.IOException;
 
-public class ChatBotWeather extends ChatBot{
+public class ChatBotWeather extends ChatBot{	
+	
+	private boolean pendingLocation;
 
 	public ChatBotWeather(String location) throws IOException {
 		super(location);
 	}
 	
-	public String outputValidation(String response, String userInput) {	//Validation of data retrieved from WeatherAPI
+	public String outputValidation(String response, String userInput) {	//Validation of data retrieved from WeatherAPI	
 		String currentWeather, temp;
 		if(userInput.contains("weather")) {
     		currentWeather = String.valueOf(this.getCurrent().getWeather_desc() );	//sets the data into a String //*
@@ -33,20 +35,28 @@ public class ChatBotWeather extends ChatBot{
 		if(userInput.contains("wear")) {
 			response = clothingSuggestion(response);
 		}
+		if(userInput.contains("location")) {
+			pendingLocation = true;
+		}
+		if(pendingLocation == true) {
+			//sets current location
+		}
 		return response;
 	}
 	
-	public String clothingSuggestion(String response) {
-		String cold = "bottoms and a jacket";
-		String mild = "bottoms and a hoodie";
-		String warm = "bottoms and a top";
-		String hot = "shorts and a top";
-		int currentWeather = (int) this.getCurrent().getTemp_current();//*
+	public String clothingSuggestion(String response) {		//This method suggests clothes to wear
+		String cold = "bottoms and a hoodie";
+		String mild = "bottoms and a top";
+		String warm = "shorts and a top";
+		String hot = "shorts and a tank-top";
+		int currentWeather = (int) this.getCurrent().getTemp_current();//*	//suggests by checking current temperature
+		String isRaining = this.getCurrent().getWeather_desc();
 		String temp;
 		
 		if(currentWeather < 6) {			
 			temp = response.replace("(answer)", cold);	
 			response = temp;
+			
 		}
 		else if(currentWeather < 12) {
 			temp = response.replace("(answer)", mild);	
@@ -60,7 +70,15 @@ public class ChatBotWeather extends ChatBot{
 			temp = response.replace("(answer)", hot);	
 			response = temp;
 		}
+		if(isRaining.contains("rain")) {
+			String raining = "Also a jacket";
+			temp = response + ". " + raining;
+			response = temp;
+		}
+		
 		return response;
 	}
+	
+
 	
 }

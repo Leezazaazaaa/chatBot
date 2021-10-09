@@ -28,14 +28,16 @@ public class Main extends Application{
 	public static void main(String[] args) throws IOException{
 		launch(args);
 		
+		
+		
 		//Example of how to use the Weather class
 		
 		WeatherData d = new WeatherData("Dublin,IE");//step1: Create a WeatherData object by sending a location
-		
+	
 		double lon=d.getCoords().getDouble("lon");
 		double lat=d.getCoords().getDouble("lat");
 		
-		//Weather day1 = d.getEightDayForcast()[0];
+		Weather day1 = d.getEightDayForcast()[0];
 		
 		
 		System.out.println("time of execution: "+d.getCurrent().getDateTime()+"\nLongitude: "+lon+"\tLatitude: "+lat);
@@ -48,13 +50,10 @@ public class Main extends Application{
 		}
 		
 		
-		ChatBot chat = new ChatBot("Dublin,IE");
-		chat.startChatBot(d);
-		
-		
-		
-		
+	
 	}
+	
+
 	
 
 }
